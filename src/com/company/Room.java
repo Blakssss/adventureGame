@@ -60,6 +60,8 @@ public class Room {
         setSouth(south);
         setNorth(north);
         setWest(west);
+        //getEast();
+        //getCurrentRoom();
     }
 }
 
