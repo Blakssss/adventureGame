@@ -8,51 +8,66 @@ public class Room {
     private Room south;
     private Room north;
     private Room west;
+    private int XPos;
+    private int YPos;
 
-    void setWest(Room west){
-        this.west=west;
+    void setWest(Room west) {
+        this.west = west;
     }
-    void setNorth(Room north){
-        this.north=north;
+
+    void setNorth(Room north) {
+        this.north = north;
     }
-    void setSouth(Room south){
-        this.south=south;
+
+    void setSouth(Room south) {
+        this.south = south;
     }
-    void setEast(Room east){
-        this.east=east;
+
+    void setEast(Room east) {
+        this.east = east;
     }
-    void setCurrentRoom(Room currentRoom){
-        this.currentRoom=currentRoom;
+
+    void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
     }
-    void setName(String name){
-        this.name=name;
+
+    void setName(String name) {
+        this.name = name;
     }
-    void setDescription(String description){
-        this.description=description;
+
+    void setDescription(String description) {
+        this.description = description;
     }
-    Room getCurrentRoom(){
+
+    Room getCurrentRoom() {
         return currentRoom;
     }
-    String getName(){
+
+    String getName() {
         return name;
     }
-    String getDescription(){
+
+    String getDescription() {
         return description;
     }
-    Room getWest(){
+
+    Room getWest() {
         return west;
     }
-    Room getNorth(){
+
+    Room getNorth() {
         return north;
     }
-    Room getEast(){
+
+    Room getEast() {
         return east;
     }
-    Room getSouth(){
+
+    Room getSouth() {
         return south;
     }
 
-    Room(String name, String description){
+    Room(String name, String description) {
         setDescription(description);
         setName(name);
         setCurrentRoom(currentRoom);
@@ -64,4 +79,3 @@ public class Room {
         //getCurrentRoom();
     }
 }
-
