@@ -27,6 +27,10 @@ public class Main {
         Room room8 = new Room("You're in room 8","There's a bunch of nothing here");
         Room room9 = new Room("You're in room 9","There's a bunch of rotten food here");
         Room currentRoom = room1;
+        room1.setEast(room2);
+        room1.setSouth(room4);
+        room1.setNorth(null);
+        room1.setWest(null);
 
         System.out.println(room1.getName());
         System.out.println(room1.getDescription());

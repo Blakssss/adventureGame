@@ -4,7 +4,23 @@ public class Room {
     private  String name;
     private  String description;
     private Room currentRoom;
+    private Room east;
+    private Room south;
+    private Room north;
+    private Room west;
 
+    void setWest(Room west){
+
+    }
+    void setNorth(Room north){
+
+    }
+    void setSouth(Room south){
+
+    }
+    void setEast(Room east){
+
+    }
     void setCurrentRoom(Room currentRoom){
         this.currentRoom=currentRoom;
     }
