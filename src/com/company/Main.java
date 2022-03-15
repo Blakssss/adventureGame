@@ -2,6 +2,7 @@ package com.company;
 import java.util.Scanner;
 public class Main {
 String where;
+String unlock;
     public static void main (String[]args){
         Main main = new Main();
         main.theGame();
@@ -44,7 +45,14 @@ String where;
             if (where.equalsIgnoreCase("east") || where.equalsIgnoreCase("e")) {
                 if (currentRoom.getEast() == null){
                     System.out.println("You cannot go that way.");
-                }   else
+                }
+                if (currentRoom == room1 || currentRoom == room7){
+                    System.out.println("The door is locked. do you wanna \"unlock\" it?");
+                    unlock = go.nextLine();
+                    if(unlock.equalsIgnoreCase("unlock")){
+                        currentRoom = currentRoom.getEast();
+                    }
+                }else
                     currentRoom = currentRoom.getEast();
             } else if (where.equalsIgnoreCase("west") || where.equalsIgnoreCase("w")) {
                 if (currentRoom.getWest() == null){
