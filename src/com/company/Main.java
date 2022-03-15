@@ -1,14 +1,16 @@
 package com.company;
 import java.util.Scanner;
 public class Main {
-String where;
-String unlock;
+  String where;
+  String unlock;
   boolean goingOn = true;
   boolean firstTime = true;
-  public static void main (String[]args){
+
+  public static void main(String[] args) {
     Main main = new Main();
     main.theGame();
   }
+
   public void theGame() {
     Scanner go = new Scanner(System.in);
     Room room1 = new Room("You're in room 1. ", "There's a bunch of skeletons here");
@@ -47,7 +49,8 @@ String unlock;
         if (currentRoom.getEast() == null) {
           System.out.println("You cannot go that way.");
         } else currentRoom = currentRoom.getEast();
-      } if (currentRoom.getFirstTime()) {
+      }
+      if (currentRoom.getFirstTime()) {
         System.out.println(currentRoom.getDescription());
         currentRoom.setFirstTime(false);
       }
@@ -55,15 +58,18 @@ String unlock;
         if (currentRoom.getWest() == null) {
           System.out.println("You cannot go that way.");
         } else currentRoom = currentRoom.getWest();
-      } if (currentRoom.getFirstTime()) {
+      }
+      if (currentRoom.getFirstTime()) {
         System.out.println(currentRoom.getDescription());
         currentRoom.setFirstTime(false);
 
-      }     if (where.equalsIgnoreCase("North") || where.equalsIgnoreCase("n")) {
+      }
+      if (where.equalsIgnoreCase("North") || where.equalsIgnoreCase("n")) {
         if (currentRoom.getNorth() == null) {
           System.out.println("You cannot go that way.");
         } else currentRoom = currentRoom.getNorth();
-      } if (currentRoom.getFirstTime()) {
+      }
+      if (currentRoom.getFirstTime()) {
         System.out.println(currentRoom.getDescription());
         currentRoom.setFirstTime(false);
       }
@@ -71,7 +77,8 @@ String unlock;
         if (currentRoom.getSouth() == null) {
           System.out.println("You cannot go that way.");
         } else currentRoom = currentRoom.getSouth();
-      } if (currentRoom.getFirstTime()) {
+      }
+      if (currentRoom.getFirstTime()) {
         System.out.println(currentRoom.getDescription());
         currentRoom.setFirstTime(false);
       }
@@ -94,5 +101,6 @@ String unlock;
         System.out.println("omg, we JUST told you." + currentRoom.getName() + currentRoom.getDescription());
       }
     }
+  }
 }
 
