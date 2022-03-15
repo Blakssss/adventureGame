@@ -8,8 +8,7 @@ public class Room {
     private Room south;
     private Room north;
     private Room west;
-    private int XPos;
-    private int YPos;
+    private boolean firstTime = true;
 
     void setWest(Room west) {
         this.west = west;
@@ -37,6 +36,9 @@ public class Room {
 
     void setDescription(String description) {
         this.description = description;
+    }
+    void setFirstTime(boolean firstTime){
+       this.firstTime = firstTime;
     }
 
     Room getCurrentRoom() {
@@ -66,6 +68,10 @@ public class Room {
     Room getSouth() {
         return south;
     }
+    boolean getFirstTime(){
+        return firstTime;
+    }
+
 
     Room(String name, String description) {
         setDescription(description);
@@ -75,7 +81,7 @@ public class Room {
         setSouth(south);
         setNorth(north);
         setWest(west);
-        //getEast();
-        //getCurrentRoom();
+        setFirstTime(firstTime);
+
     }
 }
