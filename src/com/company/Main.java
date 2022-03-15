@@ -1,17 +1,14 @@
 package com.company;
-
 import java.util.Scanner;
-
 public class Main {
-  String where;
+String where;
+String unlock;
   boolean goingOn = true;
   boolean firstTime = true;
-
-  public static void main(String[] args) {
+  public static void main (String[]args){
     Main main = new Main();
     main.theGame();
   }
-
   public void theGame() {
     Scanner go = new Scanner(System.in);
     Room room1 = new Room("You're in room 1. ", "There's a bunch of skeletons here");
@@ -97,6 +94,5 @@ public class Main {
         System.out.println("omg, we JUST told you." + currentRoom.getName() + currentRoom.getDescription());
       }
     }
-  }
 }
 
