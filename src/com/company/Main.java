@@ -1,8 +1,10 @@
 package com.company;
 import java.util.Scanner;
 public class Main {
-String where;
-String unlock;
+    String where;
+    String unlock;
+    boolean firstTime = true;
+
     public static void main (String[]args){
         Main main = new Main();
         main.theGame();
@@ -38,10 +40,12 @@ String unlock;
         room9.setNorth(room6);
         room9.setWest(room8);
 
+        System.out.println(currentRoom.getDescription());
         do {
             System.out.println(currentRoom.getName());
-            System.out.println(currentRoom.getDescription());
             where = go.nextLine();
+
+
             if (where.equalsIgnoreCase("east") || where.equalsIgnoreCase("e")) {
                 if (currentRoom.getEast() == null){
                     System.out.println("You cannot go that way.");
@@ -52,23 +56,57 @@ String unlock;
                     if(unlock.equalsIgnoreCase("unlock")){
                         currentRoom = currentRoom.getEast();
                     }
-                }else
+                }   else
                     currentRoom = currentRoom.getEast();
+
+                if (currentRoom.getFirstTime()) {
+                    System.out.println(currentRoom.getDescription());
+                    currentRoom.setFirstTime(false);
+                }
+
             } else if (where.equalsIgnoreCase("west") || where.equalsIgnoreCase("w")) {
                 if (currentRoom.getWest() == null){
                     System.out.println("You cannot go that way.");
                 }   else
                     currentRoom = currentRoom.getWest();
+
+                if (currentRoom.getFirstTime()) {
+                    System.out.println(currentRoom.getDescription());
+                    currentRoom.setFirstTime(false);
+                }
+
             } else if (where.equalsIgnoreCase("north") || where.equalsIgnoreCase("n")) {
                 if (currentRoom.getNorth() == null){
                     System.out.println("You cannot go that way.");
-                }   else
+
+                }
+                if (currentRoom == room8 || currentRoom == room6){
+                    System.out.println("The door is locked. do you wanna \"unlock\" it?");
+                    unlock = go.nextLine();
+                    if(unlock.equalsIgnoreCase("unlock")){
+                        currentRoom = currentRoom.getNorth();
+                    }
+
+                } else
                     currentRoom = currentRoom.getNorth();
+
+                if (currentRoom.getFirstTime()) {
+                    System.out.println(currentRoom.getDescription());
+                    currentRoom.setFirstTime(false);
+                }
+
+
             } else if (where.equalsIgnoreCase("south") || where.equalsIgnoreCase("s")) {
                 if (currentRoom.getSouth() == null){
                     System.out.println("You cannot go that way.");
                 }   else
                     currentRoom = currentRoom.getSouth();
+
+                if (currentRoom.getFirstTime()) {
+                    System.out.println(currentRoom.getDescription());
+                    currentRoom.setFirstTime(false);
+                }
+
             }
             if (where.equals("exit")) {
                 System.out.println("Thank you for playing.");
@@ -87,6 +125,5 @@ String unlock;
                 System.out.println("omg, we JUST told you." + currentRoom.getName() + currentRoom.getDescription());
             }
         }while(!where.equals("exit"));
-
     }
 }
