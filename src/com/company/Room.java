@@ -75,9 +75,7 @@ public class Room {
         return firstTime;
     }
 
-    Room(String name, String description) {
-        setDescription(description);
-        setName(name);
+    Room(){
         setCurrentRoom(currentRoom);
         setEast(east);
         setSouth(south);

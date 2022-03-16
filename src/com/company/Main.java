@@ -1,44 +1,18 @@
 package com.company;
 import java.util.Scanner;
 public class Main {
+    Scanner go = new Scanner(System.in);
     String where;
-    String unlock;
-    boolean firstTime = true;
-
+    //String unlock;
+    Map map = new Map();
     public static void main (String[]args){
         Main main = new Main();
         main.theGame();
     }
     public void theGame() {
-        Scanner go = new Scanner(System.in);
-        Room room1 = new Room("You're in room 1. ", "There's a bunch of skeletons here");
-        Room room2 = new Room("You're in room 2. ", "There's a bunch of bunnies here");
-        Room room3 = new Room("You're in room 3. ", "There's a bunch of alcohol here");
-        Room room4 = new Room("You're in room 4. ", "There's a bunch of furniture here");
-        Room room5 = new Room("You're in room 5. ", "There's a bunch of GOLD here!!");
-        Room room6 = new Room("You're in room 6. ", "There's a bunch of ruined books here");
-        Room room7 = new Room("You're in room 7. ", "There's a bunch of lit candles here");
-        Room room8 = new Room("You're in room 8. ", "There's a bunch of nothing here");
-        Room room9 = new Room("You're in room 9. ", "There's a bunch of rotten food here");
-        Room currentRoom = room1;
-        room1.setEast(room2);
-        room1.setSouth(room4);
-        room2.setEast(room3);
-        room2.setWest(room1);
-        room3.setSouth(room6);
-        room3.setWest(room2);
-        room4.setSouth(room7);
-        room4.setNorth(room1);
-        room5.setSouth(room8);
-        room6.setSouth(room9);
-        room6.setNorth(room3);
-        room7.setEast(room8);
-        room7.setNorth(room4);
-        room8.setEast(room9);
-        room8.setNorth(room5);
-        room8.setWest(room7);
-        room9.setNorth(room6);
-        room9.setWest(room8);
+        map.makeMap();
+        Room currentRoom = map.getStartRoom();
+
 
         System.out.println(currentRoom.getDescription());
         do {
@@ -49,15 +23,16 @@ public class Main {
             if (where.equalsIgnoreCase("east") || where.equalsIgnoreCase("e")) {
                 if (currentRoom.getEast() == null){
                     System.out.println("You cannot go that way.");
-                }
-                if (currentRoom == room1 || currentRoom == room7){
+                } else
+                    currentRoom = currentRoom.getEast();
+
+               /* if (currentRoom == room1 || currentRoom == room7){
                     System.out.println("The door is locked. do you wanna \"unlock\" it?");
                     unlock = go.nextLine();
                     if(unlock.equalsIgnoreCase("unlock")){
                         currentRoom = currentRoom.getEast();
                     }
-                }   else
-                    currentRoom = currentRoom.getEast();
+                }*/
 
                 if (currentRoom.getFirstTime()) {
                     System.out.println(currentRoom.getDescription());
@@ -80,15 +55,16 @@ public class Main {
                     System.out.println("You cannot go that way.");
 
                 }
-                if (currentRoom == room8 || currentRoom == room6){
+                else
+                    currentRoom = currentRoom.getNorth();
+
+               /* if (currentRoom == room8 || currentRoom == room6){
                     System.out.println("The door is locked. do you wanna \"unlock\" it?");
                     unlock = go.nextLine();
                     if(unlock.equalsIgnoreCase("unlock")){
                         currentRoom = currentRoom.getNorth();
                     }
-
-                } else
-                    currentRoom = currentRoom.getNorth();
+                } */
 
                 if (currentRoom.getFirstTime()) {
                     System.out.println(currentRoom.getDescription());
