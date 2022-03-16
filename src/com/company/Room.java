@@ -10,7 +10,6 @@ public class Room {
     private Room west;
     private boolean firstTime = true;
 
-
     void setWest(Room west) {
         this.west = west;
     }
