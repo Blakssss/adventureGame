@@ -12,8 +12,8 @@ public class UserInterface {
                     Your commands are as follows:
                     type east to go to the room to the east.
                     type west to go to the room to the west.
-                    type north" to go the room to the north.
-                    type south" to go to the room to the south.
+                    type north to go the room to the north.
+                    type south to go to the room to the south.
                     type help to all of this information again.
                     type look to ge the room description again.
                     type exit to exit this fun fun fun game.""");
