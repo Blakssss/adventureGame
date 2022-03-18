@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Player {
     final String deadEnd = "You cannot go that way.";
     private String where;
-    Item item = new Item("");
+    Item item = new Item("we");
     Map map = new Map();
     Room currentRoom = map.getStartRoom();
     ArrayList<String> inventory = new ArrayList<>();
@@ -24,7 +24,7 @@ public class Player {
 
     public void take(){
     if (where.equals("take")){
-        inventory.add(item.getItemName());
+        inventory.add(currentRoom.getItem().toString());
         System.out.println(inventory);
         }
     }
