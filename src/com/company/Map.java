@@ -16,8 +16,6 @@ public class Map {
         room2.setName("You're in room 2. ");
         room2.setDescription("There's a bunch of bunnies here.");
         room2.getItem().add(new Item("bunny"));
-        //Item sword = new Item();
-        //room2.addItem(sword);
 
         Room room3 = new Room();
         room3.setName("You're in room 3. ");
