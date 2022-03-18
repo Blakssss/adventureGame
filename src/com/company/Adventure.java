@@ -39,5 +39,8 @@ public class Adventure {
             userInterface.exit();
             isRunning = false;
         }
+        if (where.equals("take")){
+            player.take();
+        }
     }
 }

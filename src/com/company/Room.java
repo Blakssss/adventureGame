@@ -11,8 +11,7 @@ public class Room {
     private Room north;
     private Room west;
     private boolean firstTime = true;
-    private ArrayList<Item> item = new ArrayList<>();
-
+    private ArrayList<Item> item = new ArrayList<>(9);
     public ArrayList<Item> getItem() {
         return item;
     }
@@ -80,9 +79,7 @@ public class Room {
     boolean getFirstTime(){
         return firstTime;
     }
-    public void addItem(Item item){
-        this.item.add(item);
-    }
+
     Room(){
         setCurrentRoom(currentRoom);
         setEast(east);

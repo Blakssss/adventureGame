@@ -1,10 +1,13 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Player {
     final String deadEnd = "You cannot go that way.";
+    private String where;
+    Item item = new Item("");
     Map map = new Map();
     Room currentRoom = map.getStartRoom();
     private String where;
@@ -73,6 +76,9 @@ public class Player {
     }
 
     public void findItem() {
+        if(currentRoom.getName().equals("You're in room 8. ")){
+            System.out.println("We told you.. there's nothing here.");
+        }else
         System.out.println("You look around and find " + currentRoom.getItem());
     }
 }
