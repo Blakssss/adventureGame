@@ -2,6 +2,7 @@ package com.company;
 
 public class Map {
     Room startRoom = makeMap();
+
     public Room getStartRoom() {
         return startRoom;
     }
