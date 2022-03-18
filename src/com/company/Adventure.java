@@ -30,10 +30,10 @@ public class Adventure {
             userInterface.help();
         }
         if(where.equals("look")){
-            userInterface.look();
+            player.look();
         }
         if (where.equals("find")){
-            userInterface.findItem();
+            player.findItem();
         }
         if (where.equals("exit")){
             userInterface.exit();

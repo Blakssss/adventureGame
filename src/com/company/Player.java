@@ -1,10 +1,9 @@
 package com.company;
-import java.util.ArrayList;
+
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Player {
-    private ArrayList<Item> item = new ArrayList<>();
     final String deadEnd = "You cannot go that way.";
     Map map = new Map();
     Room currentRoom = map.getStartRoom();
@@ -67,5 +66,13 @@ public class Player {
                 currentRoom.setFirstTime(false);
             }
         }
+    }
+
+    public void look() {
+        System.out.println("omg, we JUST told you." + currentRoom.getName() + currentRoom.getDescription());
+    }
+
+    public void findItem() {
+        System.out.println("You look around and find " + currentRoom.getItem());
     }
 }

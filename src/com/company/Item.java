@@ -4,8 +4,12 @@ import java.util.ArrayList;
 
 public class Item {
     private ArrayList<Item> item = new ArrayList<>();
-    String itemName;
+    private String itemName;
 
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
 
     public ArrayList<Item> getItem() {
         return item;
@@ -19,7 +23,11 @@ public class Item {
         this.item = item;
     }
 
-    Item(String name){
-        this.itemName = name;}
-
+    Item(String itemName) {
+        setItemName(itemName);
+    }
+    @Override
+    public String toString() {
+        return itemName;
+    }
 }
