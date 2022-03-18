@@ -32,6 +32,9 @@ public class Adventure {
         if(where.equals("look")){
             userInterface.look();
         }
+        if (where.equals("find")){
+            userInterface.findItem();
+        }
         if (where.equals("exit")){
             userInterface.exit();
             isRunning = false;

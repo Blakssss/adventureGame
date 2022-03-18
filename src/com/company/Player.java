@@ -4,10 +4,9 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Player {
+    private ArrayList<Item> item = new ArrayList<>();
     final String deadEnd = "You cannot go that way.";
     Map map = new Map();
-    Item item = new Item();
-    ArrayList<Item> currentItem = item.getItem();
     Room currentRoom = map.getStartRoom();
     private String where;
     public String getWhere(){

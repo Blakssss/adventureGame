@@ -1,12 +1,13 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class UserInterface {
     Map map = new Map();
     Room currentRoom = map.getStartRoom();
-    Item item = new Item();
-    ArrayList<Item> currentItem = item.getItem();
+    //Item item = new Item("skeleton");
+    //ArrayList<Item> currentItem = item.getItem();
     public void hello(){
         System.out.println("Welcome to the dungeon of doom. " + currentRoom.getName() + currentRoom.getDescription());
     }
@@ -25,7 +26,7 @@ public class UserInterface {
             System.out.println("omg, we JUST told you." + currentRoom.getName() + currentRoom.getDescription());
     }
     public void findItem(){
-        System.out.println("You look around and find " + currentItem.get(0));
+        System.out.println("You look around and find " + currentRoom.getItem());
     }
     public void exit(){
             System.out.println("Thank you for playing.");

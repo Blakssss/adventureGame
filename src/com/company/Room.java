@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Room {
     private String name;
     private String description;
@@ -9,7 +11,11 @@ public class Room {
     private Room north;
     private Room west;
     private boolean firstTime = true;
+    private ArrayList<Item> item = new ArrayList<>();
 
+    public ArrayList<Item> getItem() {
+        return item;
+    }
     void setWest(Room west) {
         this.west = west;
     }
