@@ -1,21 +1,22 @@
 package com.company;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Player {
     final String deadEnd = "You cannot go that way.";
     Map map = new Map();
+    Item item = new Item();
+    ArrayList<Item> currentItem = item.getItem();
     Room currentRoom = map.getStartRoom();
     private String where;
     public String getWhere(){
         return where;
     }
-
     public void userCommand() {
         Scanner go = new Scanner(System.in);
         where = go.nextLine().toLowerCase(Locale.ROOT);
     }
-
     public void north() {
         if (where.equals("north") || where.equals("n")) {
             if (currentRoom.getNorth() == null) {
