@@ -25,6 +25,7 @@ public class Player {
     public void take(){
     if (where.equals("take")){
         inventory.add(currentRoom.getItem().toString());
+        currentRoom.getItem().remove(0);
         System.out.println(inventory);
         }
     }
