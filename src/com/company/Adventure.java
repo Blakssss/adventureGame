@@ -9,7 +9,7 @@ public class Adventure {
         userInterface.hello();
         while(isRunning)
             action();
-        }
+    }
     public void action(){
         player.userCommand();
         String where = player.getWhere();
@@ -40,6 +40,9 @@ public class Adventure {
         }
         if(where.equals("take")){
             player.take();
+        }
+        if(where.equals("drop")){
+            player.dropItem();
         }
         if(where.equals("inventory")){
             player.checkInventory();

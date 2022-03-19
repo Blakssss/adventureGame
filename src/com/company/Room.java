@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Room {
     private String name;
@@ -13,6 +14,9 @@ public class Room {
     private boolean firstTime = true;
     private ArrayList<Item> item = new ArrayList<>(9);
     public ArrayList<Item> getItem() {
+        return item;
+    }
+    public ArrayList<Item> dropItem() {
         return item;
     }
 
@@ -88,4 +92,6 @@ public class Room {
         setWest(west);
         setFirstTime(firstTime);
     }
+
+
 }

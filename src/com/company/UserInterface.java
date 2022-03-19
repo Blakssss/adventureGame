@@ -1,8 +1,16 @@
 package com.company;
 
+import java.util.Locale;
+import java.util.Scanner;
+
 public class UserInterface {
     Map map = new Map();
     Room currentRoom = map.getStartRoom();
+    Scanner go = new Scanner(System.in);
+
+    public void userCommand() {
+        String where = go.nextLine().toLowerCase(Locale.ROOT);
+    }
 
     public void hello(){
         System.out.println("Welcome to the dungeon of doom. " + currentRoom.getName() + currentRoom.getDescription());
