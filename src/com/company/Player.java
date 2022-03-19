@@ -29,7 +29,11 @@ public class Player {
         System.out.println(inventory);
         }
     }
-
+    public void checkInventory(){
+        if(where.equals("inventory")){
+            System.out.println("You check the contents of your bag and find: " + inventory);
+        }
+    }
     public void north() {
         if (where.equals("north") || where.equals("n")) {
             if (currentRoom.getNorth() == null) {

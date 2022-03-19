@@ -31,15 +31,18 @@ public class Adventure {
         if(where.equals("look")){
             player.look();
         }
-        if (where.equals("find")){
+        if(where.equals("find")){
             player.findItem();
         }
-        if (where.equals("exit")){
+        if(where.equals("exit")){
             userInterface.exit();
             isRunning = false;
         }
-        if (where.equals("take")){
+        if(where.equals("take")){
             player.take();
+        }
+        if(where.equals("inventory")){
+            player.checkInventory();
         }
     }
 }
