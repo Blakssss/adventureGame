@@ -72,5 +72,4 @@ public class Map {
         room9.setWest(room8);
         return room1;
     }
-
 }

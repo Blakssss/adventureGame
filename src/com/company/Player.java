@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Player {
   final String deadEnd = "You cannot go that way.";
-  Item item = new Item("we");
+  Item item = new Item("EXAMPLE");
   Map map = new Map();
   Room currentRoom = map.getStartRoom();
   ArrayList<String> inventory = new ArrayList<>();
@@ -41,19 +41,23 @@ public class Player {
       System.out.println("which item to drop?");
       System.out.println(inventory);
       userCommand();
+
       if (where.contentEquals(item.getItemName()))
       currentRoom.dropItem().remove(where);
       currentRoom.getItem().add(new Item(where));
+
       Scanner in = new Scanner(System.in);
       String komnu = in.nextLine();
       inventory.remove(komnu);
       System.out.println(inventory);
-  }
+    }
   }
     public void checkInventory () {
-      if (where.equals("inventory")) {
+      if (where.equals("inventory") && inventory.size() != 0) {
         System.out.println("You check the contents of your bag and find: " + inventory);
       }
+      else
+          System.out.println("You check the contents of your bag and find nothing.");
     }
     public void north () {
       if (where.equals("north") || where.equals("n")) {
@@ -118,7 +122,11 @@ public class Player {
     public void findItem () {
       if (currentRoom.getName().equals("You're in room 8. ")) {
         System.out.println("We told you.. there's nothing here.");
-      } else
+      }
+      else if (currentRoom.getItem() == null){
+            System.out.println("You look around and find nothing.");
+      }
+      else
         System.out.println("You look around and find " + currentRoom.getItem());
     }
   }

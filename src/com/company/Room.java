@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class Room {
     private String name;
@@ -52,9 +51,9 @@ public class Room {
         this.firstTime = firstTime;
     }
 
-    Room getCurrentRoom() {
-        return currentRoom;
-    }
+    //Room getCurrentRoom() {
+    //    return currentRoom;
+    //}
 
     String getName() {
         return name;
