@@ -40,15 +40,14 @@ public class Player {
     if (where.equals("drop")) {
       System.out.println("which item to drop?");
       System.out.println(inventory);
-      userCommand();
-
-      if (where.contentEquals(item.getItemName()))
-      currentRoom.dropItem().remove(where);
-      currentRoom.getItem().add(new Item(where));
-
       Scanner in = new Scanner(System.in);
-      String komnu = in.nextLine();
+      String komnu = in.next();
+      //userCommand();
+      //if (where.contentEquals(item.getItemName()))
+      currentRoom.getItem().add(new Item(komnu));
+      inventory.remove(new Item(komnu));
       inventory.remove(komnu);
+
       System.out.println(inventory);
     }
   }
@@ -123,7 +122,7 @@ public class Player {
       if (currentRoom.getName().equals("You're in room 8. ")) {
         System.out.println("We told you.. there's nothing here.");
       }
-      else if (currentRoom.getItem() == null){
+      else if (currentRoom.getItem().size() == 0){
             System.out.println("You look around and find nothing.");
       }
       else
