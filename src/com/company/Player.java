@@ -6,10 +6,9 @@ import java.util.Scanner;
 
 public class Player {
   final String deadEnd = "You cannot go that way.";
-  Item item = new Item("EXAMPLE");
   Map map = new Map();
   Room currentRoom = map.getStartRoom();
-  ArrayList<String> inventory = new ArrayList<>();
+  ArrayList<Item> inventory = new ArrayList<>();
   private String where;
 
   public String getWhere() {
@@ -22,37 +21,34 @@ public class Player {
   }
 
   public void take() {
-    if (where.equals("take")) {
-      if (currentRoom.getItem() == null) {
+      if (currentRoom.getItems() == null) {
         System.out.println("the room is empty");
       } else
-      inventory.add(currentRoom.getItem().toString());
+        for (Item i : currentRoom.getItems()) {
+          inventory.add(i);
+        }
 
-      if (currentRoom.getItem() == null) {
+      if (currentRoom.getItems() == null) {
         System.out.println("the room is empty");
       } else
-        currentRoom.getItem().remove(0);
+        currentRoom.getItems().remove(0);
       System.out.println(inventory);
     }
-  }
 
   public void dropItem() {
-    if (where.equals("drop")) {
       System.out.println("which item to drop?");
-      System.out.println(inventory);
       Scanner in = new Scanner(System.in);
-      String komnu = in.next();
-      //userCommand();
-      //if (where.contentEquals(item.getItemName()))
-      currentRoom.getItem().add(new Item(komnu));
-      inventory.remove(new Item(komnu));
-      inventory.remove(komnu);
-
-      System.out.println(inventory);
+      String komnu = in.nextLine();
+      for (int i = 0; i < inventory.size(); i++) {
+        if (inventory.get(i).getItemName().equals(komnu)) {
+          currentRoom.dropItem(inventory.get(i));
+          inventory.remove(i);
+        }
+      }
     }
-  }
+
     public void checkInventory () {
-      if (where.equals("inventory") && inventory.size() != 0) {
+      if (inventory.size() > 0) {
         System.out.println("You check the contents of your bag and find: " + inventory);
       }
       else
@@ -122,10 +118,10 @@ public class Player {
       if (currentRoom.getName().equals("You're in room 8. ")) {
         System.out.println("We told you.. there's nothing here.");
       }
-      else if (currentRoom.getItem().size() == 0){
+      else if (currentRoom.getItems().size() == 0){
             System.out.println("You look around and find nothing.");
       }
       else
-        System.out.println("You look around and find " + currentRoom.getItem());
+        System.out.println("You look around and find " + currentRoom.getItems());
     }
   }

@@ -11,12 +11,12 @@ public class Room {
     private Room north;
     private Room west;
     private boolean firstTime = true;
-    private ArrayList<Item> item = new ArrayList<>(9);
-    public ArrayList<Item> getItem() {
-        return item;
+    private ArrayList<Item> items = new ArrayList<>(9);
+    public ArrayList<Item> getItems() {
+        return items;
     }
-    public ArrayList<Item> dropItem() {
-        return item;
+    public void dropItem(Item item) {
+        items.add(item);
     }
 
     void setWest(Room west) {
@@ -50,10 +50,6 @@ public class Room {
     void setFirstTime(boolean firstTime){
         this.firstTime = firstTime;
     }
-
-    //Room getCurrentRoom() {
-    //    return currentRoom;
-    //}
 
     String getName() {
         return name;
