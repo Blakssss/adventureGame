@@ -21,22 +21,23 @@ public class Player {
   }
 
   public void take() {
-      if (currentRoom.getItems() == null) {
+      if (currentRoom.getItems().size() == 0) {
         System.out.println("the room is empty");
-      } else
-        for (Item i : currentRoom.getItems()) {
-          inventory.add(i);
+      } else {
+        System.out.println("Which item do you wanna pick up?");
+        where = go.nextLine().toLowerCase(Locale.ROOT);
+        for (int i = 0; i < currentRoom.getItems().size(); i++) {
+          if (currentRoom.getItems().get(i).getItemName().equals(where)) {
+            inventory.add(currentRoom.getItems().get(i));
+          }
         }
-
-      if (currentRoom.getItems() == null) {
-        System.out.println("the room is empty");
-      } else
+        System.out.println("Your bag now contains: " + inventory);
         currentRoom.getItems().removeAll(inventory);
-      System.out.println(inventory);
+      }
     }
 
   public void dropItem() {
-      System.out.println("which item to drop?");
+      System.out.println("Which item do you wanna drop?");
     where = go.nextLine().toLowerCase(Locale.ROOT);
       for (int i = 0; i < inventory.size(); i++) {
         if (inventory.get(i).getItemName().equals(where)) {
@@ -44,7 +45,8 @@ public class Player {
           inventory.remove(i);
         }
       }
-    }
+    System.out.println("You see the room now contains: " + currentRoom.getItems());
+  }
 
     public void checkInventory () {
       if (inventory.size() > 0) {
