@@ -5,6 +5,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Player {
+  Scanner go = new Scanner(System.in);
   final String deadEnd = "You cannot go that way.";
   Map map = new Map();
   Room currentRoom = map.getStartRoom();
@@ -16,7 +17,6 @@ public class Player {
   }
 
   public void userCommand() {
-    Scanner go = new Scanner(System.in);
     where = go.nextLine().toLowerCase(Locale.ROOT);
   }
 
@@ -37,10 +37,9 @@ public class Player {
 
   public void dropItem() {
       System.out.println("which item to drop?");
-      Scanner in = new Scanner(System.in);
-      String komnu = in.nextLine();
+    where = go.nextLine().toLowerCase(Locale.ROOT);
       for (int i = 0; i < inventory.size(); i++) {
-        if (inventory.get(i).getItemName().equals(komnu)) {
+        if (inventory.get(i).getItemName().equals(where)) {
           currentRoom.dropItem(inventory.get(i));
           inventory.remove(i);
         }
