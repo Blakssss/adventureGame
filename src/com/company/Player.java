@@ -31,7 +31,7 @@ public class Player {
       if (currentRoom.getItems() == null) {
         System.out.println("the room is empty");
       } else
-        currentRoom.getItems().remove(0);
+        currentRoom.getItems().removeAll(inventory);
       System.out.println(inventory);
     }
 
