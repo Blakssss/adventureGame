@@ -11,30 +11,37 @@ public class Player {
   Room currentRoom = map.getStartRoom();
   ArrayList<Item> inventory = new ArrayList<>();
   private String where;
+  private int maxWeight = 100;
 
   public String getWhere() {
     return where;
-  }
+    }
 
   public void userCommand() {
     where = go.nextLine().toLowerCase(Locale.ROOT);
-  }
+    }
 
   public void take() {
-      if (currentRoom.getItems().size() == 0) {
-        System.out.println("the room is empty");
-      } else {
-        System.out.println("Which item do you wanna pick up?");
-        where = go.nextLine().toLowerCase(Locale.ROOT);
-        for (int i = 0; i < currentRoom.getItems().size(); i++) {
-          if (currentRoom.getItems().get(i).getItemName().equals(where)) {
-            inventory.add(currentRoom.getItems().get(i));
-          }
+    if (currentRoom.getItems().size() == 0) {
+      System.out.println("the room is empty");
+    } else {
+      System.out.println("Which item do you wanna pick up?");
+      where = go.nextLine().toLowerCase(Locale.ROOT);
+      for (int i = 0; i < currentRoom.getItems().size(); i++) {
+        if (currentRoom.getItems().get(i).getItemName().equals(where)) {
+          inventory.add(currentRoom.getItems().get(i));
+          maxWeight = maxWeight - currentRoom.getItems().get(i).getItemWeight();
         }
-        System.out.println("Your bag now contains: " + inventory);
-        currentRoom.getItems().removeAll(inventory);
+      }
+      System.out.println("Taking this item puts your remaining max weight at: " + maxWeight);
+      System.out.println("Your bag now contains: " + inventory);
+      currentRoom.getItems().removeAll(inventory);
+      if(maxWeight < 0);{
+        System.out.println("You're carrying so much, you can't even move! You have to drop something.");
+        dropItem();
       }
     }
+  }
 
   public void dropItem() {
       System.out.println("Which item do you wanna drop?");
