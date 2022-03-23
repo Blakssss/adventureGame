@@ -60,7 +60,7 @@ public class Player {
         System.out.println("You check the contents of your bag and find: " + inventory);
       }
       else
-          System.out.println("You check the contents of your bag and find nothing.");
+          System.out.println("You check the contents of your bag and find nothing." + "\nSensing the weight of your bag you feel your remaining max weight must be: " + maxWeight);
     }
     public void north () {
       if (where.equals("north") || where.equals("n")) {
