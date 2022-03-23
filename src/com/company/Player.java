@@ -36,7 +36,7 @@ public class Player {
       System.out.println("Taking this item puts your remaining max weight at: " + maxWeight);
       System.out.println("Your bag now contains: " + inventory);
       currentRoom.getItems().removeAll(inventory);
-      if(maxWeight < 0);{
+      if(maxWeight < 0){
         System.out.println("You're carrying so much, you can't even move! You have to drop something.");
         dropItem();
       }
