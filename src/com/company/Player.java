@@ -36,7 +36,7 @@ public class Player {
       System.out.println("Taking this item puts your remaining max weight at: " + maxWeight);
       System.out.println("Your bag now contains: " + inventory);
       currentRoom.getItems().removeAll(inventory);
-      if(maxWeight < 0){
+      while(maxWeight < 0){
         System.out.println("You're carrying so much, you can't even move! You have to drop something.");
         dropItem();
       }
@@ -49,10 +49,11 @@ public class Player {
       for (int i = 0; i < inventory.size(); i++) {
         if (inventory.get(i).getItemName().equals(where)) {
           currentRoom.dropItem(inventory.get(i));
+          maxWeight = maxWeight + inventory.get(i).getItemWeight();
           inventory.remove(i);
         }
       }
-    System.out.println("You see the room now contains: " + currentRoom.getItems());
+    System.out.println("You see the room now contains: " + currentRoom.getItems() + "\nDropping this item puts your max weight at: " + maxWeight);
   }
 
     public void checkInventory () {
