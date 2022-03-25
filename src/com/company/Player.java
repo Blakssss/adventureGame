@@ -10,8 +10,14 @@ public class Player {
   Map map = new Map();
   Room currentRoom = map.getStartRoom();
   ArrayList<Item> inventory = new ArrayList<>();
+  ArrayList<Food> foodBag = new ArrayList<>();
   private String where;
   private int maxWeight = 100;
+  private int HP = 100;
+
+  public int getHP() {
+    return HP;
+  }
 
   public String getWhere() {
     return where;
@@ -20,6 +26,34 @@ public class Player {
   public void userCommand() {
     where = go.nextLine().toLowerCase(Locale.ROOT);
     }
+  public void takeFood() {
+    System.out.println("What food do you wanna pick up?");
+    where = go.nextLine().toLowerCase(Locale.ROOT);
+    for (int i = 0; i < currentRoom.getFood().size(); i++) {
+      if (currentRoom.getFood().get(i).getItemName().equals(where)) {
+        foodBag.add(currentRoom.getFood().get(i));
+        maxWeight = maxWeight - currentRoom.getFood().get(i).getItemWeight();
+      }
+    }
+    System.out.println("Taking this food item puts your remaining max weight at: " + maxWeight);
+    System.out.println("Your bag now contains: " + inventory + foodBag);
+    currentRoom.getFood().removeAll(foodBag);
+    while(maxWeight < 0){
+      System.out.println("You're carrying so much, you can't even move! You have to drop something.");
+      //dropItem();
+    }
+  }
+  public void eat(){
+    System.out.println("What you do you wanna eat?");
+    where = go.nextLine().toLowerCase(Locale.ROOT);
+    for (int i = 0; i < foodBag.size(); i++) {
+      if (foodBag.get(i).getItemName().equals(where)) {
+        //HP = HP + foodBag.get(i).getFoodHealth;
+        maxWeight = maxWeight + foodBag.get(i).getItemWeight();
+        foodBag.remove(i);
+      }
+    }
+  }
 
   public void take() {
     if (currentRoom.getItems().size() == 0) {
@@ -56,12 +90,12 @@ public class Player {
     System.out.println("You see the room now contains: " + currentRoom.getItems() + "\nDropping this item puts your max weight at: " + maxWeight);
   }
 
-    public void checkInventory () {
+  public void checkInventory () {
       if (inventory.size() > 0) {
-        System.out.println("You check the contents of your bag and find: " + inventory);
+        System.out.println("You check the contents of your bag and find: " + inventory + "\nSensing the weight of your bag you feel your remaining max weight must be: " + maxWeight);
       }
       else
-          System.out.println("You check the contents of your bag and find nothing." + "\nSensing the weight of your bag you feel your remaining max weight must be: " + maxWeight);
+          System.out.println("You check the contents of your bag and find nothing.");
     }
     public void north () {
       if (where.equals("north") || where.equals("n")) {
@@ -127,10 +161,10 @@ public class Player {
       if (currentRoom.getName().equals("You're in room 8. ")) {
         System.out.println("We told you.. there's nothing here.");
       }
-      else if (currentRoom.getItems().size() == 0){
+      else if (currentRoom.getItems().size() == 0 && currentRoom.getFood().size() == 0){
             System.out.println("You look around and find nothing.");
       }
       else
-        System.out.println("You look around and find " + currentRoom.getItems());
+        System.out.println("You look around and find " + currentRoom.getItems() + currentRoom.getFood());
     }
   }

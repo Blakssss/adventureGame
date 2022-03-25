@@ -47,5 +47,14 @@ public class Adventure {
         if(where.equals("inventory")){
             player.checkInventory();
         }
+        if (where.equals("health")){
+            userInterface.health();
+        }
+        if (where.equals("take food")){
+            player.takeFood();
+        }
+        if (where.equals("eat")){
+            player.eat();
+        }
     }
 }

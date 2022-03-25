@@ -12,6 +12,12 @@ public class Room {
     private Room west;
     private boolean firstTime = true;
     private ArrayList<Item> items = new ArrayList<>(9);
+    private ArrayList<Food> food = new ArrayList<>();
+
+    public ArrayList<Food> getFood() {
+        return food;
+    }
+
     public ArrayList<Item> getItems() {
         return items;
     }
