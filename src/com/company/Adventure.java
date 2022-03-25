@@ -55,6 +55,7 @@ public class Adventure {
         }
         if (where.equals("eat")){
             player.eat();
+            userInterface.health();
         }
     }
 }

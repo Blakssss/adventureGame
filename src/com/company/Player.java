@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 public class Player {
   Scanner go = new Scanner(System.in);
-  final String deadEnd = "You cannot go that way.";
-  Map map = new Map();
+    Map map = new Map();
   Room currentRoom = map.getStartRoom();
+
   ArrayList<Item> inventory = new ArrayList<>();
   ArrayList<Food> foodBag = new ArrayList<>();
+  final String deadEnd = "You cannot go that way.";
   private String where;
   private int maxWeight = 100;
   private int HP = 100;
@@ -21,11 +22,12 @@ public class Player {
 
   public String getWhere() {
     return where;
-    }
+  }
 
   public void userCommand() {
     where = go.nextLine().toLowerCase(Locale.ROOT);
-    }
+  }
+
   public void takeFood() {
     System.out.println("What food do you wanna pick up?");
     where = go.nextLine().toLowerCase(Locale.ROOT);
@@ -48,7 +50,8 @@ public class Player {
     where = go.nextLine().toLowerCase(Locale.ROOT);
     for (int i = 0; i < foodBag.size(); i++) {
       if (foodBag.get(i).getItemName().equals(where)) {
-        //HP = HP + foodBag.get(i).getFoodHealth;
+        //HEALING DOESN'T WORK
+        HP = HP + foodBag.get(i).getFoodHealth();
         maxWeight = maxWeight + foodBag.get(i).getItemWeight();
         foodBag.remove(i);
       }

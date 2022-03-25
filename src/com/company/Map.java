@@ -12,7 +12,7 @@ public class Map {
         room1.setName("You're in room 1. ");
         room1.setDescription("There's a bunch of skeletons here.");
         room1.getItems().add(new Item("skeleton",10));
-        room1.getFood().add(new Food("Apple Pie",1,10));
+        room1.getFood().add(new Food("pie",1,10));
 
         Room room2 = new Room();
         room2.setName("You're in room 2. ");
@@ -22,7 +22,7 @@ public class Map {
 
         Room room3 = new Room();
         room3.setName("You're in room 3. ");
-        room3.setDescription("There's a bunch of alcohol here.");
+        room3.setDescription("There's a bunch of rotten food and alcohol here.");
         room3.getItems().add(new Item("alcohol",3));
         room3.getFood().add(new Food("rotten steak",1,-10));
 
