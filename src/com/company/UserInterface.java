@@ -17,7 +17,15 @@ public class UserInterface {
                     type south to go to the room to the south.
                     type help to all of this information again.
                     type look to ge the room description again.
-                    type exit to exit this fun fun fun game.""");
+                    type exit to exit this fun fun fun game.
+                    type find to find whatever items are in the current room.
+                    type take to take one of the items in the room.
+                    type drop to drop one the items on your person.
+                    type health to check your current HP.
+                    type take food to take one the food items in the current room.
+                    type drop food to drop one of the food items on your person.
+                    type inventory to check the contents on your person.
+                    type eat to eat one of the food items on your person.""");
     }
     public void health(){
         System.out.println("Your current health is at: " + player.getHP());
