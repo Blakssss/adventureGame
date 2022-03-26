@@ -19,6 +19,7 @@ public class Map {
         room2.setDescription("There's a bunch of bunnies here.");
         room2.getItems().add(new Item("bunny",5));
         room2.getFood().add(new Food("carrot",1,5));
+        room2.setLock(true);
 
         Room room3 = new Room();
         room3.setName("You're in room 3. ");
@@ -37,6 +38,7 @@ public class Map {
         room5.setDescription("There's a bunch of GOLD here!!");
         room5.getItems().add(new Item("gold",100));
         room5.getFood().add(new Food("dead rat",1,-15));
+        room5.setLock(true);
 
         Room room6 = new Room();
         room6.setName("You're in room 6. ");

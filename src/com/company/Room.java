@@ -6,6 +6,7 @@ public class Room {
     private String name;
     private String description;
     private Room currentRoom;
+    private Room lastRoom;
     private Room east;
     private Room south;
     private Room north;
@@ -13,6 +14,7 @@ public class Room {
     private boolean firstTime = true;
     private ArrayList<Item> items = new ArrayList<>(9);
     private ArrayList<Food> food = new ArrayList<>();
+    private boolean lock = true;
 
     public ArrayList<Food> getFood() {
         return food;
@@ -21,6 +23,7 @@ public class Room {
     public ArrayList<Item> getItems() {
         return items;
     }
+
     public void dropItem(Item item) {
         items.add(item);
     }
@@ -53,7 +56,7 @@ public class Room {
         this.description = description;
     }
 
-    void setFirstTime(boolean firstTime){
+    void setFirstTime(boolean firstTime) {
         this.firstTime = firstTime;
     }
 
@@ -81,18 +84,41 @@ public class Room {
         return south;
     }
 
-    boolean getFirstTime(){
+    boolean getFirstTime() {
         return firstTime;
     }
 
-    Room(){
+    public boolean setLock(boolean lock) {
+        this.lock = lock;
+        return lock;
+    }
+
+    public boolean getLock() {
+        return lock;
+    }
+
+    public boolean setUnlock() {
+        this.lock = true;
+        return lock;
+    }
+
+    public Room setLastRoom(Room lastRoom) {
+        this.lastRoom = lastRoom;
+        return lastRoom;
+    }
+
+    Room() {
         setCurrentRoom(currentRoom);
         setEast(east);
         setSouth(south);
         setNorth(north);
         setWest(west);
         setFirstTime(firstTime);
+        setLock(false);
+        setLastRoom(lastRoom);
+
     }
-
-
 }
+
+
+

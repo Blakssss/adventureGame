@@ -8,7 +8,9 @@ public class Adventure {
     public void run(){
         userInterface.hello();
         while(isRunning)
+         //   player.bossRoom();
             action();
+
     }
     public void action(){
         player.userCommand();
