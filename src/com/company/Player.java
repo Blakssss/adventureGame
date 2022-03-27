@@ -6,15 +6,18 @@ import java.util.Scanner;
 
 public class Player {
   Scanner go = new Scanner(System.in);
-    Map map = new Map();
+  Map map = new Map();
   Room currentRoom = map.getStartRoom();
 
   ArrayList<Item> inventory = new ArrayList<>();
   ArrayList<Food> foodBag = new ArrayList<>();
+
   final String deadEnd = "You cannot go that way.";
   private String where;
   private int maxWeight = 100;
   private int HP = 100;
+
+
 
   public int getHP() {
     return HP;
@@ -45,13 +48,14 @@ public class Player {
       //dropItem();
     }
   }
+
   public void eat(){
     System.out.println("What you do you wanna eat?");
     where = go.nextLine().toLowerCase(Locale.ROOT);
     for (int i = 0; i < foodBag.size(); i++) {
       if (foodBag.get(i).getItemName().equals(where)) {
-        //HEALING DOESN'T WORK
-        HP = HP + foodBag.get(i).getFoodHealth();
+        //HEALING DOES WORK - BUT THE HEALTH METHOD IN UI DOESN'T UPDATE
+        HP = HP + foodBag.get(i).foodHealth;
         maxWeight = maxWeight + foodBag.get(i).getItemWeight();
         foodBag.remove(i);
       }
@@ -94,12 +98,13 @@ public class Player {
   }
 
   public void checkInventory () {
-      if (inventory.size() > 0) {
-        System.out.println("You check the contents of your bag and find: " + inventory + "\nSensing the weight of your bag you feel your remaining max weight must be: " + maxWeight);
+      if (inventory.size() > 0 && foodBag.size() > 0) {
+        System.out.println("You check the contents of your bag and find: " + inventory + foodBag + "\nSensing the weight of your bag you feel your remaining max weight must be: " + maxWeight);
       }
       else
           System.out.println("You check the contents of your bag and find nothing.");
     }
+
     public void north () {
       if (where.equals("north") || where.equals("n")) {
         if (currentRoom.getNorth() == null) {
