@@ -12,9 +12,19 @@ public class Room {
     private Room north;
     private Room west;
     private boolean firstTime = true;
-    private ArrayList<Item> items = new ArrayList<>(9);
+    private ArrayList<Item> items = new ArrayList<>();
     private ArrayList<Food> food = new ArrayList<>();
+    private ArrayList<Weapon> weapon = new ArrayList<>();
+    private ArrayList<Monster> monster = new ArrayList<>();
     private boolean lock = true;
+
+    public ArrayList<Monster> getMonster() {
+        return monster;
+    }
+
+    public ArrayList<Weapon> getWeapon() {
+        return weapon;
+    }
 
     public ArrayList<Food> getFood() {
         return food;
@@ -97,16 +107,6 @@ public class Room {
         return lock;
     }
 
-    public boolean setUnlock() {
-        this.lock = true;
-        return lock;
-    }
-
-    public Room setLastRoom(Room lastRoom) {
-        this.lastRoom = lastRoom;
-        return lastRoom;
-    }
-
     Room() {
         setCurrentRoom(currentRoom);
         setEast(east);
@@ -115,7 +115,6 @@ public class Room {
         setWest(west);
         setFirstTime(firstTime);
         setLock(false);
-        setLastRoom(lastRoom);
 
     }
 }

@@ -8,10 +8,9 @@ public class Adventure {
     public void run(){
         userInterface.hello();
         while(isRunning)
-         //   player.bossRoom();
             action();
-
     }
+
     public void action(){
         player.userCommand();
         String where = player.getWhere();
@@ -50,14 +49,17 @@ public class Adventure {
             player.checkInventory();
         }
         if (where.equals("health")){
-            userInterface.health();
-        }
-        if (where.equals("take food")){
-            player.takeFood();
+            userInterface.health(player);
         }
         if (where.equals("eat")){
             player.eat();
-            userInterface.health();
+            userInterface.health(player);
+        }
+        if(where.equals("equip")){
+            player.equip();
+        }
+        if(where.equals("unequip")){
+            player.unequip();
         }
     }
 }

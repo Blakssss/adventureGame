@@ -13,19 +13,22 @@ public class Map {
         room1.setDescription("There's a bunch of skeletons here.");
         room1.getItems().add(new Item("skeleton",10));
         room1.getFood().add(new Food("pie",1,10));
+        room1.getWeapon().add(new Weapon("sword",5,20));
 
         Room room2 = new Room();
         room2.setName("You're in room 2. ");
         room2.setDescription("There's a bunch of bunnies here.");
         room2.getItems().add(new Item("bunny",5));
         room2.getFood().add(new Food("carrot",1,5));
-        room2.setLock(true);
+        room2.getWeapon().add(new Weapon("spear",3,15));
+        room2.getMonster().add(new Monster("ogre", 20,70));
 
         Room room3 = new Room();
         room3.setName("You're in room 3. ");
         room3.setDescription("There's a bunch of rotten food and alcohol here.");
         room3.getItems().add(new Item("alcohol",3));
         room3.getFood().add(new Food("rotten steak",1,-10));
+        room3.getWeapon().add(new Weapon("axe",8,30));
 
         Room room4 = new Room();
         room4.setName("You're in room 4. ");
@@ -45,6 +48,7 @@ public class Map {
         room6.setDescription("There's a bunch of ruined books here.");
         room6.getItems().add(new Item("book",1));
         room6.getFood().add(new Food("old wine bottle",1,-25));
+        room4.getWeapon().add(new Weapon("magic bow and arrow",2,100));
 
         Room room7 = new Room();
         room7.setName("You're in room 7. ");

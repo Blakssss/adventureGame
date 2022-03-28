@@ -3,7 +3,6 @@ package com.company;
 public class UserInterface {
     Map map = new Map();
     Room currentRoom = map.getStartRoom();
-    Player player = new Player();
 
     public void hello(){
         System.out.println("Welcome to the dungeon of doom. " + currentRoom.getName() + currentRoom.getDescription());
@@ -22,14 +21,12 @@ public class UserInterface {
                     type take to take one of the items in the room.
                     type drop to drop one the items on your person.
                     type health to check your current HP.
-                    type take food to take one the food items in the current room.
-                    type drop food to drop one of the food items on your person.
                     type inventory to check the contents on your person.
                     type eat to eat one of the food items on your person.""");
     }
-    public void health(){
+    public void health(Player player){
         System.out.println("Your current health is at: " + player.getHP());
-        if(player.getHP() == 100){
+        if(player.getHP() >= 100){
             System.out.println("You're in perfect health!");
         }
         else if(player.getHP() < 100 && player.getHP() >= 75){
