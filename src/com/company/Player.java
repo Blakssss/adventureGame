@@ -16,7 +16,7 @@ public class Player {
   private String where;
   private int maxWeight = 100;
   private int HP = 100;
-
+  int monsterHP;
 
   public int getHP() {
     return HP;
@@ -28,6 +28,18 @@ public class Player {
 
   public void userCommand() {
     where = go.nextLine().toLowerCase(Locale.ROOT);
+  }
+  public void attack(){
+    System.out.println("What do you wanna attack?");
+    where = go.nextLine().toLowerCase(Locale.ROOT);
+    for (int i = 0; i < currentRoom.getMonster().size(); i++) {
+      if (currentRoom.getMonster().get(i).getName().equals(where)) {
+       monsterHP = currentRoom.getMonster().get(i).getHealthPoint();
+       monsterHP = monsterHP - equipment.get(i).getDamage();
+      maxWeight = maxWeight - currentRoom.getItems().get(i).getItemWeight();
+      }
+    }
+    System.out.println("You hurt the monster! it's hp is now down to: " + monsterHP);
   }
 
   public void equip() {
@@ -45,7 +57,9 @@ public class Player {
         }
       }
     }
-  }public void unequip() {
+  }
+
+  public void unequip() {
     System.out.println("What do you wanna unequip?");
     where = go.nextLine().toLowerCase(Locale.ROOT);
     for (int i = 0; i < equipment.size(); i++) {
@@ -147,7 +161,6 @@ public class Player {
         System.out.println(currentRoom.getDescription());
         currentRoom.setFirstTime(false);
       }
-    }
   }
 
   public void south() {
@@ -164,7 +177,6 @@ public class Player {
         System.out.println(currentRoom.getDescription());
         currentRoom.setFirstTime(false);
       }
-    }
   }
 
   public void west() {
@@ -181,7 +193,7 @@ public class Player {
         System.out.println(currentRoom.getDescription());
         currentRoom.setFirstTime(false);
       }
-    }
+
   }
 
   public void east() {
@@ -199,7 +211,7 @@ public class Player {
         currentRoom.setFirstTime(false);
       }
     }
-  }
+
 
   public void look() {
     System.out.println("omg, we JUST told you." + currentRoom.getName() + currentRoom.getDescription());

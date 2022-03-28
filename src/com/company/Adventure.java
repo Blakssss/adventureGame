@@ -61,5 +61,8 @@ public class Adventure {
         if(where.equals("unequip")){
             player.unequip();
         }
+        if(where.equals("attack")){
+            player.attack();
+        }
     }
 }
