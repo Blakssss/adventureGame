@@ -17,6 +17,8 @@ public class Player {
   private int maxWeight = 100;
   private int HP = 100;
   int monsterHP;
+  int ammoCount;
+  boolean noFood;
 
   public int getHP() {
     return HP;
@@ -29,23 +31,35 @@ public class Player {
   public void userCommand() {
     where = go.nextLine().toLowerCase(Locale.ROOT);
   }
-  public void attack(){
-    System.out.println("What do you wanna attack?");
-    where = go.nextLine().toLowerCase(Locale.ROOT);
-    for (int i = 0; i < currentRoom.getMonster().size(); i++) {
-      if (currentRoom.getMonster().get(i).getName().equals(where)) {
-       monsterHP = currentRoom.getMonster().get(i).getHealthPoint();
-       monsterHP = monsterHP - equipment.get(i).getDamage();
-      maxWeight = maxWeight - currentRoom.getItems().get(i).getItemWeight();
+
+  public void attack() {
+    if (equipment.size() == 0) {
+      System.out.println("You don't have a weapon equipped.");
+    } else {
+      System.out.println("What do you wanna attack?");
+      where = go.nextLine().toLowerCase(Locale.ROOT);
+      for (int i = 0; i < currentRoom.getMonster().size(); i++) {
+        if (currentRoom.getMonster().get(i).getName().equals(where)) {
+          monsterHP = currentRoom.getMonster().get(i).getHealthPoint();
+          monsterHP = monsterHP - equipment.get(i).getDamage();
+          ammoCount = ((RangedWeapon) equipment.get(i)).ammo;
+          ammoCount--;
+        }
       }
+      if (ammoCount == 0) {
+        System.out.println("You're out of ammo.");
+      }
+      System.out.println("You hurt the monster! it's hp is now down to: " + monsterHP);
     }
-    System.out.println("You hurt the monster! it's hp is now down to: " + monsterHP);
   }
 
   public void equip() {
     System.out.println("What do you wanna equip?");
     where = go.nextLine().toLowerCase(Locale.ROOT);
     for (int i = 0; i < inventory.size(); i++) {
+      if (!inventory.get(i).getItemName().equals(where)){
+        System.out.println("You have no such weapon on you");
+      }
       if (inventory.get(i).getItemName().equals(where)) {
         if (!(inventory.get(i) instanceof Weapon)) {
           System.out.println("That's not a weapon, you dummy!");
@@ -91,17 +105,24 @@ public class Player {
           maxWeight = maxWeight - currentRoom.getFood().get(i).getItemWeight();
         }
       }
-      for (int i = 0; i < currentRoom.getWeapon().size(); i++) {
-        if (currentRoom.getWeapon().get(i).getItemName().equals(where)) {
-          inventory.add(currentRoom.getWeapon().get(i));
-          maxWeight = maxWeight - currentRoom.getWeapon().get(i).getItemWeight();
+      for (int i = 0; i < currentRoom.getMeleeWeapon().size(); i++) {
+        if (currentRoom.getMeleeWeapon().get(i).getItemName().equals(where)) {
+          inventory.add(currentRoom.getMeleeWeapon().get(i));
+          maxWeight = maxWeight - currentRoom.getMeleeWeapon().get(i).getItemWeight();
+        }
+      }
+      for (int i = 0; i < currentRoom.getRangedWeapon().size(); i++) {
+        if (currentRoom.getRangedWeapon().get(i).getItemName().equals(where)) {
+          inventory.add(currentRoom.getRangedWeapon().get(i));
+          maxWeight = maxWeight - currentRoom.getRangedWeapon().get(i).getItemWeight();
         }
       }
       System.out.println("Taking this item puts your remaining max weight at: " + maxWeight);
       System.out.println("Your bag now contains: " + inventory);
       currentRoom.getItems().removeAll(inventory);
       currentRoom.getFood().removeAll(inventory);
-      currentRoom.getWeapon().removeAll(inventory);
+      currentRoom.getMeleeWeapon().removeAll(inventory);
+      currentRoom.getRangedWeapon().removeAll(inventory);
 
       while (maxWeight < 0) {
         System.out.println("You're carrying so much, you can't even move! You have to drop something.");
@@ -117,6 +138,7 @@ public class Player {
       if (inventory.get(i).getItemName().equals(where)) {
         if(!(inventory.get(i) instanceof Food)) {
           System.out.println("That's not food, you dummy!");
+
         }
         if (inventory.get(i) instanceof Food) {
           HP = HP + ((Food) inventory.get(i)).foodHealth;
@@ -137,7 +159,7 @@ public class Player {
         inventory.remove(i);
       }
     }
-    System.out.println("You see the room now contains: " + currentRoom.getItems() + "\nDropping this item puts your max weight at: " + maxWeight);
+    System.out.println("You see the room now contains: " + currentRoom.getItems() + currentRoom.getFood() + currentRoom.getRangedWeapon() + currentRoom.getMeleeWeapon() + "\nDropping this item puts your max weight at: " + maxWeight);
   }
 
   public void checkInventory() {
@@ -212,7 +234,6 @@ public class Player {
       }
     }
 
-
   public void look() {
     System.out.println("omg, we JUST told you." + currentRoom.getName() + currentRoom.getDescription());
   }
@@ -223,7 +244,7 @@ public class Player {
     } else if (currentRoom.getItems().size() == 0 && currentRoom.getFood().size() == 0 && currentRoom.getWeapon().size() == 0) {
       System.out.println("You look around and find nothing.");
     } else
-      System.out.println("You look around and find " + currentRoom.getItems() + currentRoom.getFood() + currentRoom.getWeapon());
+      System.out.println("You look around and find " + currentRoom.getItems() + currentRoom.getFood() + currentRoom.getMeleeWeapon() + currentRoom.getRangedWeapon());
   }
 
   public void locked() {

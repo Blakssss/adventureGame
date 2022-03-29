@@ -6,7 +6,6 @@ public class Room {
     private String name;
     private String description;
     private Room currentRoom;
-    private Room lastRoom;
     private Room east;
     private Room south;
     private Room north;
@@ -16,7 +15,17 @@ public class Room {
     private ArrayList<Food> food = new ArrayList<>();
     private ArrayList<Weapon> weapon = new ArrayList<>();
     private ArrayList<Monster> monster = new ArrayList<>();
+    private ArrayList<MeleeWeapon> meleeWeapon = new ArrayList<>();
+    private ArrayList<RangedWeapon> rangedWeapon = new ArrayList<>();
     private boolean lock = true;
+
+    public ArrayList<MeleeWeapon> getMeleeWeapon() {
+        return meleeWeapon;
+    }
+
+    public ArrayList<RangedWeapon> getRangedWeapon() {
+        return rangedWeapon;
+    }
 
     public ArrayList<Monster> getMonster() {
         return monster;

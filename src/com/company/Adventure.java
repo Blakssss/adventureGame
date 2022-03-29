@@ -5,7 +5,8 @@ public class Adventure {
     Player player = new Player();
     UserInterface userInterface = new UserInterface();
 
-    public void run(){
+
+    public void run() {
         userInterface.hello();
         while(isRunning)
             action();
