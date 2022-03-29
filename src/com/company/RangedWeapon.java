@@ -10,9 +10,6 @@ public class RangedWeapon extends Weapon{
     public int getAmmo() {
         return ammo;
     }
-    public void setAmmo(){
-        this.ammo = ammo;
-    }
 
     @Override
     public void durability() {

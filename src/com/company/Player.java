@@ -17,7 +17,7 @@ public class Player {
   private int maxWeight = 100;
   private int HP = 100;
   int monsterHP;
-  int ammoCount = 2;
+  int ammoCount = 1;
 
   public int getHP() {
     return HP;
@@ -41,17 +41,25 @@ public class Player {
         if (currentRoom.getMonster().get(i).getName().equals(where)) {
           monsterHP = currentRoom.getMonster().get(i).getHealthPoint();
           monsterHP = monsterHP - equipment.get(i).getDamage();
-          ammoCount = ((RangedWeapon) equipment.get(i)).ammo;
-          ammoCount--;
-          ((RangedWeapon) equipment.get(i)).ammo = ammoCount;
-          System.out.println("You have this much ammo left: " + ((RangedWeapon) equipment.get(i)).ammo);
+          currentRoom.getMonster().get(i).setHealthPoint(monsterHP);
+
+          if(equipment.get(i) instanceof RangedWeapon) {
+            ammoCount = ((RangedWeapon) equipment.get(i)).ammo;
+            ammoCount--;
+            ((RangedWeapon) equipment.get(i)).ammo = ammoCount;
+            System.out.println("You have this much ammo left: " + ((RangedWeapon) equipment.get(i)).ammo);
+          }
+
+          System.out.println("You hurt the monster! it's hp is now down to: " + monsterHP);
           if (ammoCount == 0) {
             System.out.println("You're out of ammo. The magic bow shatters into a million tiny motes of light.");
-            equipment.remove(i);
+          }
+          if(monsterHP <= 0){
+            currentRoom.getMonster().remove(i);
+            System.out.println("You've killed the monster. The threat in this room has passed.");
           }
         }
       }
-      System.out.println("You hurt the monster! it's hp is now down to: " + monsterHP);
     }
   }
 
@@ -217,8 +225,7 @@ public class Player {
         System.out.println(currentRoom.getDescription());
         currentRoom.setFirstTime(false);
       }
-
-  }
+    }
 
   public void east() {
     if (where.equals("east") || where.equals("e")) {

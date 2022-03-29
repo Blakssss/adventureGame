@@ -6,8 +6,4 @@ public class Food extends Item {
         super(itemName, itemWeight);
         this.foodHealth = foodHealth;
     }
-
-    public int getFoodHealth() {
-        return foodHealth;
-    }
 }
