@@ -48,7 +48,7 @@ public class Map {
         room6.setDescription("There's a bunch of ruined books here.");
         room6.getItems().add(new Item("book",1));
         room6.getFood().add(new Food("old wine bottle",1,-25));
-        room6.getRangedWeapon().add(new RangedWeapon("magic weapon",2,100,5));
+        room6.getRangedWeapon().add(new RangedWeapon("magic bow",2,100,1));
 
         Room room7 = new Room();
         room7.setName("You're in room 7. ");

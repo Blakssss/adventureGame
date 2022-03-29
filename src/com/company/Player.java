@@ -17,8 +17,7 @@ public class Player {
   private int maxWeight = 100;
   private int HP = 100;
   int monsterHP;
-  int ammoCount;
-  boolean noFood;
+  int ammoCount = 2;
 
   public int getHP() {
     return HP;
@@ -44,10 +43,13 @@ public class Player {
           monsterHP = monsterHP - equipment.get(i).getDamage();
           ammoCount = ((RangedWeapon) equipment.get(i)).ammo;
           ammoCount--;
+          ((RangedWeapon) equipment.get(i)).ammo = ammoCount;
+          System.out.println("You have this much ammo left: " + ((RangedWeapon) equipment.get(i)).ammo);
+          if (ammoCount == 0) {
+            System.out.println("You're out of ammo. The magic bow shatters into a million tiny motes of light.");
+            equipment.remove(i);
+          }
         }
-      }
-      if (ammoCount == 0) {
-        System.out.println("You're out of ammo.");
       }
       System.out.println("You hurt the monster! it's hp is now down to: " + monsterHP);
     }
