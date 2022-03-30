@@ -5,9 +5,11 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Player {
+  boolean onGoing = false;
   Scanner go = new Scanner(System.in);
   Map map = new Map();
   Room currentRoom = map.getStartRoom();
+
 
   ArrayList<Item> inventory = new ArrayList<>();
   ArrayList<Weapon> equipment = new ArrayList<>();
@@ -29,6 +31,18 @@ public class Player {
 
   public void userCommand() {
     where = go.nextLine().toLowerCase(Locale.ROOT);
+  }
+
+  public void playerTurn(){
+  onGoing = true;
+    System.out.println("its the players turn!");
+    if (where.equals("attack")) {
+    }
+  }
+
+  public void monsterTurn(){
+    onGoing = true;
+    System.out.println("its the Monsters turn!");
   }
 
   public void attack() {
@@ -178,9 +192,15 @@ public class Player {
     } else
       System.out.println("You check the contents of your bag and find nothing.");
   }
+  public void checkEquipment() {
+    if (equipment.size() > 0) {
+      System.out.println("You check your weapons and find: " + equipment +" and ammo:" + currentRoom.getRangedWeapon().get(0).getAmmo()+
+              "\nSensing the weight around your body you feel your remaining max weight must be: " + maxWeight);
+    } else
+      System.out.println("You check if your weapon is equipped and find nothing.");
+  }
 
   public void north() {
-    if (where.equals("north") || where.equals("n")) {
       if (currentRoom.getLock()) {
         locked();
       }
@@ -196,7 +216,6 @@ public class Player {
   }
 
   public void south() {
-    if (where.equals("south") || where.equals("s")) {
       if (currentRoom.getLock()) {
         locked();
       }
@@ -212,7 +231,6 @@ public class Player {
   }
 
   public void west() {
-    if (where.equals("west") || where.equals("w")) {
       if (currentRoom.getLock()) {
         locked();
       }
@@ -228,7 +246,6 @@ public class Player {
     }
 
   public void east() {
-    if (where.equals("east") || where.equals("e")) {
       if (currentRoom.getLock()) {
         locked();
       }
