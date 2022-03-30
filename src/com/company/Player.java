@@ -14,7 +14,7 @@ public class Player {
 
   final String deadEnd = "You cannot go that way.";
   private String where;
-  private int maxWeight = 100;
+  private int maxWeight = 200;
   private int HP = 100;
   int monsterHP;
   int ammoCount = 1;
