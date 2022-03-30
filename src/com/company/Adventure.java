@@ -5,7 +5,6 @@ public class Adventure {
     Player player = new Player();
     UserInterface userInterface = new UserInterface();
 
-
     public void run() {
         userInterface.hello();
         while (isRunning)
@@ -38,6 +37,7 @@ public class Adventure {
             case "eat" -> {
                 player.eat();
                 userInterface.health(player);
+
             }
         }
     }

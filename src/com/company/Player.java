@@ -5,6 +5,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Player {
+  UserInterface UI = new UserInterface();
   boolean onGoing = false;
   Scanner go = new Scanner(System.in);
   Map map = new Map();
@@ -42,7 +43,9 @@ public class Player {
 
   public void monsterTurn(){
     onGoing = true;
-    System.out.println("its the Monsters turn!");
+    System.out.println("The monster is attacking you! Watch out!");
+    System.out.println("Ouch! The monster hit you for " + currentRoom.getMonster());
+
   }
 
   public void attack() {
@@ -72,6 +75,15 @@ public class Player {
             currentRoom.getMonster().remove(i);
             System.out.println("You've killed the monster. The threat in this room has passed.");
           }
+        }
+        if(monsterHP > 0){
+          System.out.println("Ouch! The monster hit you back for " + currentRoom.getMonster().get(i).getDamage());
+          HP = HP - currentRoom.getMonster().get(i).getDamage();
+          System.out.println("Your HP is now: " + HP);
+        }
+        if(HP <= 0){
+          System.out.println("You died.");
+          UI.exit();
         }
       }
     }
@@ -170,6 +182,9 @@ public class Player {
           inventory.remove(i);
         }
       }
+    }
+    if(HP <= 0){
+      System.out.println("You died.");
     }
   }
 

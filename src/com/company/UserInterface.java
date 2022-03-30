@@ -36,11 +36,14 @@ public class UserInterface {
         else if(player.getHP() < 75 && player.getHP() >= 25){
             System.out.println("You're starting to look pretty banged up. You should eat some.");
         }
-        else
+        else if(player.getHP() < 25 && player.getHP() > 0)
             System.out.println("Jesus! You're almost dead! Get some food quick!");
+        else
+            System.out.println("You died.");
     }
     public void exit(){
             System.out.println("Thank you for playing.");
+
     }
 }
 
