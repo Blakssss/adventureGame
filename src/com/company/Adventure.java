@@ -30,15 +30,15 @@ public class Adventure {
             case "attack" -> player.attack();
             case "help", "?" -> userInterface.help();
             case "health" -> userInterface.health(player);
-            case "exit", "escape" -> {
-                userInterface.exit();
-                isRunning = false;
-            }
+            case "exit", "escape" -> exit();
             case "eat" -> {
                 player.eat();
                 userInterface.health(player);
-
             }
         }
+    }
+    public void exit(){
+        userInterface.exit();
+        isRunning = false;
     }
 }

@@ -11,7 +11,6 @@ public class Player {
   Map map = new Map();
   Room currentRoom = map.getStartRoom();
 
-
   ArrayList<Item> inventory = new ArrayList<>();
   ArrayList<Weapon> equipment = new ArrayList<>();
 
@@ -45,7 +44,6 @@ public class Player {
     onGoing = true;
     System.out.println("The monster is attacking you! Watch out!");
     System.out.println("Ouch! The monster hit you for " + currentRoom.getMonster());
-
   }
 
   public void attack() {
@@ -54,6 +52,10 @@ public class Player {
     } else {
       System.out.println("What do you wanna attack?");
       where = go.nextLine().toLowerCase(Locale.ROOT);
+
+      if(currentRoom.getMonster().size() == 0){
+        System.out.println("You attack and hit nothing... Well done.");
+      }
       for (int i = 0; i < currentRoom.getMonster().size(); i++) {
         if (currentRoom.getMonster().get(i).getName().equals(where)) {
           monsterHP = currentRoom.getMonster().get(i).getHealthPoint();
