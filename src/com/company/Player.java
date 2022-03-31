@@ -74,13 +74,15 @@ public class Player {
             System.out.println("You're out of ammo. The magic bow shatters into a million tiny motes of light.");
           }
           if(monsterHP <= 0){
+            currentRoom.addMonsterWeapon(currentRoom.getMonster().get(i).getMonsterWeapon());
             currentRoom.getMonster().remove(i);
             System.out.println("You've killed the monster. The threat in this room has passed.");
           }
         }
+
         if(monsterHP > 0){
-          System.out.println("Ouch! The monster hit you back for " + currentRoom.getMonster().get(i).getDamage());
-          HP = HP - currentRoom.getMonster().get(i).getDamage();
+          System.out.println("Ouch! The monster hit you back for " + currentRoom.getMonster().get(i).getMonsterWeapon().getDamage());
+          HP = HP - currentRoom.getMonster().get(i).getMonsterWeapon().getDamage();
           System.out.println("Your HP is now: " + HP);
         }
         if(HP <= 0){
@@ -155,6 +157,12 @@ public class Player {
           maxWeight = maxWeight - currentRoom.getRangedWeapon().get(i).getItemWeight();
         }
       }
+      for (int i = 0; i < currentRoom.getMonsterWeapon().size(); i++) {
+        if (currentRoom.getMonsterWeapon().get(i).getItemName().equals(where)) {
+          inventory.add(currentRoom.getMonsterWeapon().get(i));
+          maxWeight = maxWeight - currentRoom.getMonsterWeapon().get(i).getItemWeight();
+        }
+      }
       System.out.println("Taking this item puts your remaining max weight at: " + maxWeight);
       System.out.println("Your bag now contains: " + inventory);
       currentRoom.getItems().removeAll(inventory);
@@ -211,12 +219,12 @@ public class Player {
   }
   public void checkEquipment() {
     if (equipment.size() > 0) {
-      System.out.println("You check your weapons and find: " + equipment +" and ammo:" + currentRoom.getRangedWeapon().get(0).getAmmo()+
+      System.out.println("You check your weapons and find: " + equipment +
               "\nSensing the weight around your body you feel your remaining max weight must be: " + maxWeight);
     } else
       System.out.println("You check if your weapon is equipped and find nothing.");
   }
-
+//" and ammo:" + currentRoom.getRangedWeapon().get(0).getAmmo()+
   public void north() {
       if (currentRoom.getLock()) {
         locked();
@@ -287,7 +295,7 @@ public class Player {
     } else if (currentRoom.getItems().size() == 0 && currentRoom.getFood().size() == 0 && currentRoom.getWeapon().size() == 0) {
       System.out.println("You look around and find nothing.");
     } else
-      System.out.println("You look around and find " + currentRoom.getItems() + currentRoom.getFood() + currentRoom.getMeleeWeapon() + currentRoom.getRangedWeapon());
+      System.out.println("You look around and find " + currentRoom.getItems() + currentRoom.getFood() + currentRoom.getMeleeWeapon() + currentRoom.getRangedWeapon() + currentRoom.getMonsterWeapon());
   }
 
   public void locked() {

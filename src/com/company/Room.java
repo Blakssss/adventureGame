@@ -14,6 +14,7 @@ public class Room {
     private ArrayList<Item> items = new ArrayList<>();
     private ArrayList<Food> food = new ArrayList<>();
     private ArrayList<Weapon> weapon = new ArrayList<>();
+    private ArrayList<MonsterWeapon> monsterWeapons = new ArrayList<>();
     private ArrayList<Monster> monster = new ArrayList<>();
     private ArrayList<MeleeWeapon> meleeWeapon = new ArrayList<>();
     private ArrayList<RangedWeapon> rangedWeapon = new ArrayList<>();
@@ -23,6 +24,13 @@ public class Room {
         return meleeWeapon;
     }
 
+    public ArrayList<MonsterWeapon> getMonsterWeapon() {
+        return monsterWeapons;
+    }
+
+    public void addMonsterWeapon(MonsterWeapon monsterWeapon){
+        monsterWeapons.add(monsterWeapon);
+    }
     public ArrayList<RangedWeapon> getRangedWeapon() {
         return rangedWeapon;
     }

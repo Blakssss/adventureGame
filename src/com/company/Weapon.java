@@ -9,6 +9,20 @@ abstract class Weapon extends Item{
         setAmmoCount(ammoCount);
     }
 
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    @Override
+    public void setItemName(String itemName) {
+        super.setItemName(itemName);
+    }
+
+    @Override
+    public void setItemWeight(int itemWeight) {
+        super.setItemWeight(itemWeight);
+    }
+
     public int getDamage() {
         return damage;
     }

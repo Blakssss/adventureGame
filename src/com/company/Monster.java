@@ -2,13 +2,17 @@ package com.company;
 
 public class Monster {
     private String name;
-    private int damage;
     private int healthPoint;
+    private MonsterWeapon monsterWeapon;
 
-    Monster(String name, int damage, int healthPoint){
+    Monster(String name, int healthPoint, MonsterWeapon monsterWeapon){
         this.name = name;
-        this.damage = damage;
         this.healthPoint = healthPoint;
+        this.monsterWeapon = monsterWeapon;
+    }
+
+    public MonsterWeapon getMonsterWeapon() {
+        return monsterWeapon;
     }
 
     public String getName() {
@@ -23,7 +27,6 @@ public class Monster {
         this.healthPoint = healthPoint;
     }
 
-    public int getDamage() {
-        return damage;
-    }
+
+
 }

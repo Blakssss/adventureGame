@@ -13,7 +13,7 @@ public class Map {
         room1.setDescription("There's a bunch of skeletons here, a pie and a sword.");
         room1.getItems().add(new Item("skeleton",10));
         room1.getFood().add(new Food("pie",1,10));
-        room1.getMeleeWeapon().add(new MeleeWeapon("sword",5,20));
+        room1.getMeleeWeapon().add(new MeleeWeapon("sword",5,25));
 
         Room room2 = new Room();
         room2.setName("You're in room 2. ");
@@ -21,7 +21,7 @@ public class Map {
         room2.getItems().add(new Item("bunny",5));
         room2.getFood().add(new Food("carrot",1,5));
         room2.getMeleeWeapon().add(new MeleeWeapon("spear",3,15));
-        room2.getMonster().add(new Monster("ogre", 20,70));
+        room2.getMonster().add(new Monster("ogre", 10,new MonsterWeapon("orc sword",20,30)));
 
         Room room3 = new Room();
         room3.setName("You're in room 3. ");
