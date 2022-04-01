@@ -72,6 +72,7 @@ public class Player {
           System.out.println("You hurt the monster! it's hp is now down to: " + monsterHP);
           if (ammoCount == 0) {
             System.out.println("You're out of ammo. The magic bow shatters into a million tiny motes of light.");
+            equipment.remove(i);
           }
           if(monsterHP <= 0){
             currentRoom.addMonsterWeapon(currentRoom.getMonster().get(i).getMonsterWeapon());
